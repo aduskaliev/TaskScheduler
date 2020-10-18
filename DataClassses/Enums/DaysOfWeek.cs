@@ -1,6 +1,6 @@
 ﻿
 
-namespace DataClassses
+namespace SharedClasses
 {
     public enum DaysOfWeek
     {

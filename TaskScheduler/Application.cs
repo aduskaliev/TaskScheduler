@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using TaskScheduler.Services.Utiliity;
+using TaskScheduler.Services.Utility;
 
 namespace TaskScheduler
 {

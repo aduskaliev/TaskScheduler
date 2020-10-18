@@ -10,7 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataClassses\DataClassses.csproj" />
+    <ProjectReference Include="..\DataClassses\SharedClasses.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Main\" />
   </ItemGroup>
 
 </Project>

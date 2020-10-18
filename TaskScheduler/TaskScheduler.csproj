@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataClassses\DataClassses.csproj" />
+    <ProjectReference Include="..\DataClassses\SharedClasses.csproj" />
     <ProjectReference Include="..\TaskSchedulerConsole\TaskSchedulerConsole.csproj" />
     <ProjectReference Include="..\TaskSchedulerDataHandler\TaskSchedulerDataHandler.csproj" />
   </ItemGroup>

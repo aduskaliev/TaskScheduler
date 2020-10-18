@@ -1,34 +1,37 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TaskScheduler.Services.Utiliity;
+using TaskScheduler.Services.Utility;
 
 namespace TaskScheduler
 {
-    class Startup
+    public class Startup
     {
+        private static IServiceCollection _serviceCollection;
+        private static string _pathToConfig;
+
+        static Startup()
+        {
+            _serviceCollection = new ServiceCollection();
+            _pathToConfig = "config.ini";
+        }
+
         static void Main()
         {
-            ServiceCollection serviceCollection = new ServiceCollection();
-            Configure(serviceCollection);
-            RegisterServices(serviceCollection);
+            RegisterServices();
+            Configure();            
+          
+            Application app = _serviceCollection.BuildServiceProvider().GetService<Application>();
+            app.Run(_serviceCollection);
+        }        
 
-            serviceCollection.AddSingleton(provider => new Application());
-            ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();            
-            Application app = serviceProvider.GetService<Application>();
-            app.Run(serviceCollection);
+        private static void RegisterServices()
+        {
+            _serviceCollection.AddSingleton(provider => new Application());
+            _serviceCollection.AddSingleton(provider => IniConfiguration.ConfigurationBuilder(_serviceCollection, _pathToConfig));
         }
 
-        static void Configure(IServiceCollection serviceCollection)
+        private static void Configure()
         {
-            string pathToConfig = "config.ini";
-  
-            serviceCollection.AddSingleton(provider => IniConfiguration.ConfigurationBuilder(serviceCollection, pathToConfig));
-            ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
-            serviceProvider.GetService<IniConfiguration>();
-        }
-
-        static void RegisterServices(IServiceCollection serviceCollection)
-        {
-
+            _serviceCollection.BuildServiceProvider().GetService<IniConfiguration>();
         }
     }
 }
