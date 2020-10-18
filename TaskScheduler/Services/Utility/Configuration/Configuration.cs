@@ -32,15 +32,6 @@ namespace TaskScheduler.Services.Utility
             Configure();
         }
 
-        /*
-         * implement service replacement mechanism
-        internal void Reconfigure(IConfiguration config)
-        {
-            this._config = config;
-            Configure();
-        }
-        */
-
         private void Configure()
         {
             ConfigureLogger();
@@ -77,7 +68,7 @@ namespace TaskScheduler.Services.Utility
             {
                 case "console":
                 default:
-                    _serviceCollection.AddSingleton<IUserInterface>(provider => new ConsoleInterface());
+                    _serviceCollection.AddSingleton<IUserInterface>(provider => new ConsoleInterface(_serviceCollection));
                     break;
             }
 

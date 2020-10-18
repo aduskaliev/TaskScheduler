@@ -1,4 +1,5 @@
-﻿using TaskSchedulerConsole;
+﻿using Microsoft.Extensions.DependencyInjection;
+using TaskSchedulerConsole;
 
 namespace TaskScheduler.Services.Utility
 {
@@ -6,9 +7,9 @@ namespace TaskScheduler.Services.Utility
     {
         private readonly ConsoleSession _instance;
 
-        public ConsoleInterface()
+        public ConsoleInterface(IServiceCollection serviceCollection)
         {
-            _instance = new ConsoleSession();
+            _instance = new ConsoleSession(serviceCollection);
         }
 
         public void Run()

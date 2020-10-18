@@ -10,13 +10,11 @@ namespace TaskSchedulerConsole
 {
     public class ConsoleSession
     {
-        private readonly object _instance;
         private static IServiceCollection _serviceCollection;
         public static IServiceCollection ServiceCollection => _serviceCollection;
 
         public ConsoleSession(IServiceCollection serviceCollection)
         {
-            _instance = new object();
             _serviceCollection = serviceCollection;
             RegisterServices();
         }
